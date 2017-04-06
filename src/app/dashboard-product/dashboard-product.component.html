@@ -1,7 +1,19 @@
-<td-layout-nav logo="assets:covalent">
+<td-layout-nav logo="assets:covalent" #root="$implicit" dir="ltr">
   <div td-toolbar-content layout="row" layout-align="center center" flex>
     <span>Quickstart</span>
     <span flex></span>
+
+
+     <button md-icon-button [mdMenuTriggerFor]="settingsMenu">
+       <md-icon>more_vert</md-icon>
+     </button>
+     <md-menu #settingsMenu="mdMenu">
+       <button md-menu-item (click)="root.dir = (root.dir == 'rtl' ? 'ltr' : 'rtl'); changeDir(root.dir)" title="Toggle between RTL and LTR">
+         <md-icon>swap_horiz</md-icon>
+         <span>{{root.dir.toUpperCase()}}</span>
+       </button>
+     </md-menu>
+
     <a md-icon-button mdTooltip="Docs" href="https://teradata.github.io/covalent/" target="_blank"><md-icon>chrome_reader_mode</md-icon></a>
     <a md-icon-button mdTooltip="Github" href="https://github.com/teradata/covalent" target="_blank"><md-icon svgIcon="assets:github"></md-icon></a>
   </div>
