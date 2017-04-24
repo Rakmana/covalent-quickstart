@@ -1,6 +1,6 @@
-<td-layout-nav logo="assets:covalent" #root="$implicit" dir="ltr">
+<td-layout-nav logo="assets:covalent" #root="$implicit" dir="rtl">
   <div td-toolbar-content layout="row" layout-align="center center" flex>
-    <span>Quickstart</span>
+    <span>بداية سريعة</span>
     <span flex></span>
 
 
@@ -14,15 +14,15 @@
        </button>
      </md-menu>
 
-    <a md-icon-button mdTooltip="Docs" href="https://teradata.github.io/covalent/" target="_blank"><md-icon>chrome_reader_mode</md-icon></a>
-    <a md-icon-button mdTooltip="Github" href="https://github.com/teradata/covalent" target="_blank"><md-icon svgIcon="assets:github"></md-icon></a>
+    <a md-icon-button mdTooltip="توثيق" href="https://teradata.github.io/covalent/" target="_blank"><md-icon>chrome_reader_mode</md-icon></a>
+    <a md-icon-button mdTooltip="جيتهوب" href="https://github.com/teradata/covalent" target="_blank"><md-icon svgIcon="assets:github"></md-icon></a>
   </div>
   <td-layout-manage-list #manageList
                         [opened]="media.registerQuery('gt-sm') | async"
                         [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'push'"
                         [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '257px' : '100%'">
     <md-toolbar td-sidenav-content>
-      <span>Product Name</span>
+      <span>اسم المنتوج</span>
     </md-toolbar>
     <md-nav-list td-sidenav-content>
       <a md-list-item
@@ -32,7 +32,7 @@
         [routerLinkActiveOptions]="{exact:true}"
         [routerLink]="['/product']">
         <md-icon md-list-icon>dashboard</md-icon>
-        Dashboard
+        لوحة التحكم
       </a>
       <a md-list-item
         md-ripple class="block relative"
@@ -41,7 +41,7 @@
         [routerLinkActiveOptions]="{exact:true}"
         [routerLink]="['stats']">
         <md-icon md-list-icon>insert_chart</md-icon>
-        Stats
+        قياسات
       </a>
       <a md-list-item
         md-ripple class="block relative"
@@ -50,20 +50,20 @@
         [routerLinkActiveOptions]="{exact:true}"
         [routerLink]="['features']">
         <md-icon md-list-icon>star</md-icon>
-        Features
+        مميزات
       </a>
       <a md-list-item (click)="!media.query('gt-sm') && manageList.close()" md-ripple class="block relative">
         <md-icon md-list-icon>people</md-icon>
-        Customers
+        عملاء
       </a>
-      <h3 md-subheader>Admin Menu</h3>
+      <h3 md-subheader>قائمة المدير</h3>
       <a md-list-item (click)="!media.query('gt-sm') && manageList.close()" md-ripple class="block relative">
         <md-icon md-list-icon>receipt</md-icon>
-        Log
+        آثار
       </a>
       <a md-list-item (click)="!media.query('gt-sm') && manageList.close()" md-ripple class="block relative">
         <md-icon md-list-icon>settings</md-icon>
-        Settings
+        إعدادات
       </a>
     </md-nav-list>
     <div td-toolbar-content layout="row" layout-align="start center" flex>

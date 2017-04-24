@@ -38,7 +38,7 @@ export class ProductFeaturesComponent implements AfterViewInit {
     });
   }
   ngAfterViewInit(): void {
-    this._titleService.setTitle( 'Product Features' );
+    this._titleService.setTitle( 'مميزات' );
     this.loadFeatures();
   }
   filterFeatures(filterTitle: string = ''): void {

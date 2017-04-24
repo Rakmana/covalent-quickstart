@@ -30,6 +30,7 @@ import { appRoutes, appRoutingProviders } from './app.routes';
 import { RequestInterceptor } from '../config/interceptors/request.interceptor';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { LangSwitcherComponent } from './lang-switcher/lang-switcher.component';
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -55,6 +56,7 @@ const httpInterceptorProviders: Type<any>[] = [
     DashboardTemplateComponent,
     EmailTemplateComponent,
     EditorTemplateComponent,
+    LangSwitcherComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, Inject, Renderer } from '@angular/core';
 
-import { Title }     from '@angular/platform-browser';
+import { Title,  DOCUMENT }     from '@angular/platform-browser';
 
 import { TdLoadingService, TdDigitsPipe } from '@covalent/core';
 
@@ -49,7 +49,9 @@ export class DashboardComponent implements AfterViewInit {
               private _usersService: UsersService,
               private _alertsService: AlertsService,
               private _productsService: ProductsService,
-              private _loadingService: TdLoadingService) {
+              private _loadingService: TdLoadingService,
+              private _renderer: Renderer,
+               @Inject(DOCUMENT) private _document: HTMLElement) {
                 // Chart
                 this.multi = multi.map((group: any) => {
                   group.series = group.series.map((dataItem: any) => {
@@ -116,5 +118,9 @@ export class DashboardComponent implements AfterViewInit {
   // ngx transform using covalent digits pipe
   axisDigits(val: any): any {
     return new TdDigitsPipe().transform(val);
+  }   
+  
+  changeDir(dir: string): void {
+     this._renderer.setElementAttribute(this._document.querySelector('html'), 'dir', dir);
   }
 }

@@ -1,11 +1,12 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, Inject, Renderer } from '@angular/core';
 import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { Title,  DOCUMENT } from '@angular/platform-browser';
 import { MdSnackBar } from '@angular/material';
 
 import { TdLoadingService, TdDialogService, TdMediaService } from '@covalent/core';
 
 import { UsersService, IUser } from '../../services';
+
 
 @Component({
   selector: 'qs-users',
@@ -24,7 +25,9 @@ export class UsersComponent implements AfterViewInit {
               private _dialogService: TdDialogService,
               private _snackBarService: MdSnackBar,
               private _usersService: UsersService,
-              public media: TdMediaService) {
+              public media: TdMediaService,
+              private _renderer: Renderer,
+               @Inject(DOCUMENT) private _document: HTMLElement) {
   }
 
   goBack(route: string): void {
@@ -81,6 +84,9 @@ export class UsersComponent implements AfterViewInit {
           });
         }
       });
+  }
+  changeDir(dir: string): void {
+     this._renderer.setElementAttribute(this._document.querySelector('html'), 'dir', dir);
   }
 
 }
