@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {KeycloakService} from '../keycloak/keycloak.service';
 
 @Component({
   selector: 'qs-main',
@@ -31,9 +32,11 @@ export class MainComponent {
     },
   ];
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router, 
+              private kc: KeycloakService) {}
 
   logout(): void {
+    this.kc.logout();
     this._router.navigate(['/login']);
   }
 }

@@ -30,7 +30,8 @@ import { appRoutes, appRoutingProviders } from './app.routes';
 import { RequestInterceptor } from '../config/interceptors/request.interceptor';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { LangSwitcherComponent } from './lang-switcher/lang-switcher.component';
+import { KeycloakService } from './keycloak/keycloak.service';
+import { KeycloakHttp, KEYCLOAK_HTTP_PROVIDER } from './keycloak/keycloak.http';
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -56,7 +57,6 @@ const httpInterceptorProviders: Type<any>[] = [
     DashboardTemplateComponent,
     EmailTemplateComponent,
     EditorTemplateComponent,
-    LangSwitcherComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     BrowserModule,
@@ -76,6 +76,8 @@ const httpInterceptorProviders: Type<any>[] = [
     appRoutingProviders,
     httpInterceptorProviders,
     Title,
+    KeycloakService,
+    KEYCLOAK_HTTP_PROVIDER
   ], // additional providers needed for this module
   entryComponents: [ ],
   bootstrap: [ AppComponent ],
