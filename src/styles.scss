@@ -21,8 +21,8 @@ td-layout-manage-list .mat-toolbar {
 /*
  * Override default material design fonts ($mat-font-family)
  */
-@import url(//fonts.googleapis.com/earlyaccess/notonaskharabic.css);
-$mat-font-family: Helvetica, 'Noto Naskh Arabic', serif;
+//@import url(//fonts.googleapis.com/earlyaccess/notonaskharabic.css);
+$mat-font-family: Helvetica, Tahoma, serif;
 /*'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
 
 @font-face {

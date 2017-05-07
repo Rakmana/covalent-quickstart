@@ -38,7 +38,7 @@ export class UsersComponent implements AfterViewInit {
     // broadcast to all listener observables when loading the page
     this.media.broadcast();
 
-    this._titleService.setTitle( 'Covalent Users' );
+    this._titleService.setTitle( 'المستخدمون' );
     this.loadUsers();
   }
 
@@ -84,9 +84,6 @@ export class UsersComponent implements AfterViewInit {
           });
         }
       });
-  }
-  changeDir(dir: string): void {
-     this._renderer.setElementAttribute(this._document.querySelector('html'), 'dir', dir);
   }
 
 }

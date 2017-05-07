@@ -1,21 +1,4 @@
-<td-layout-nav logo="assets:covalent" #root="$implicit" dir="rtl">
-  <div td-toolbar-content layout="row" layout-align="center center" flex>
-    <span>المستخدمون</span>
-    <span flex></span>
 
-     <button md-icon-button [mdMenuTriggerFor]="settingsMenu">
-       <md-icon>more_vert</md-icon>
-     </button>
-     <md-menu #settingsMenu="mdMenu">
-       <button md-menu-item (click)="root.dir = (root.dir == 'rtl' ? 'ltr' : 'rtl'); changeDir(root.dir)" title="Toggle between RTL and LTR">
-         <md-icon>swap_horiz</md-icon>
-         <span>{{root.dir.toUpperCase()}}</span>
-       </button>
-     </md-menu>
-
-    <a md-icon-button mdTooltip="Docs" href="https://teradata.github.io/covalent/" target="_blank"><md-icon>chrome_reader_mode</md-icon></a>
-    <a md-icon-button mdTooltip="Github" href="https://github.com/teradata/covalent" target="_blank"><md-icon svgIcon="assets:github"></md-icon></a>
-  </div>
   <td-layout-manage-list #manageList
                         [opened]="media.registerQuery('gt-sm') | async"
                         [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'push'"
@@ -24,7 +7,7 @@
       <span>المستخدمون</span>
     </md-toolbar>
     <md-nav-list td-sidenav-content (click)="!media.query('gt-sm') && manageList.close()">
-      <a md-list-item>
+      <a md-list-item  [routerLink]="['/users']">
         <md-icon md-list-icon>account_circle</md-icon>
         كل المستخدمين
       </a>
@@ -46,7 +29,7 @@
       </a>
     </md-nav-list>
     <div td-toolbar-content layout="row" layout-align="start center" flex>
-      <span>كل المستخدمين</span>
+      <span></span>
       <span flex></span>
       <button md-icon-button><md-icon class="md-24">view_module</md-icon></button>
       <button md-icon-button><md-icon class="md-24">sort</md-icon></button>
@@ -54,11 +37,14 @@
       <button md-icon-button><md-icon class="md-24">more_vert</md-icon></button>
     </div>
     <div class="md-content">
+    </div>    
+    
+    <router-outlet></router-outlet>
 
-    </div>
     <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
       <td-search-box class="push-left push-right" placeholder="search" [alwaysVisible]="true" (searchDebounce)="filterUsers($event)"></td-search-box>
       <md-divider></md-divider>
+      
       <ng-template tdLoading="users.list">
         <md-list class="will-load">
           <div class="md-padding" *ngIf="!filteredUsers || filteredUsers.length === 0" layout="row" layout-align="center center">
@@ -89,9 +75,11 @@
           </ng-template>
         </md-list>
       </ng-template>
+
     </md-card>
+
   </td-layout-manage-list>   
-</td-layout-nav>
+
 <a md-fab color="accent" class="mat-fab-bottom-right" [routerLink]="['add']">
   <md-icon>add</md-icon>
 </a>

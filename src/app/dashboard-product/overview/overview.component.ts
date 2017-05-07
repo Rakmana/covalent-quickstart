@@ -69,7 +69,7 @@ export class ProductOverviewComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this._titleService.setTitle( 'Product Name' );
+    this._titleService.setTitle( 'لوحة تحكم المنتجات' );
 
     this._loadingService.register('items.load');
     this._itemsService.query().subscribe((items: Object[]) => {

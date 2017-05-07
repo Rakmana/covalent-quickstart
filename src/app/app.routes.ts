@@ -37,8 +37,8 @@ const routes: Routes = [
     {path: 'item/:id', component: DetailComponent},
     {path: 'logs', component: LogsComponent},
     {path: 'form', component: FormComponent},
-    {path: 'users', children: [
-      {path: '', component: UsersComponent},
+    {path: 'users',component: UsersComponent, children: [
+      //{path: '', component: UsersComponent},
       {path: 'add', component: UsersFormComponent},
       {path: ':id/delete', component: UsersFormComponent},
       {path: ':id/edit', component: UsersFormComponent},

@@ -63,7 +63,7 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this._titleService.setTitle( 'Covalent Quickstart' );
+    this._titleService.setTitle( 'بداية سريعة' );
     this._loadingService.register('items.load');
     this._itemsService.query().subscribe((items: Object[]) => {
       this.items = items;
@@ -120,7 +120,4 @@ export class DashboardComponent implements AfterViewInit {
     return new TdDigitsPipe().transform(val);
   }   
   
-  changeDir(dir: string): void {
-     this._renderer.setElementAttribute(this._document.querySelector('html'), 'dir', dir);
-  }
 }

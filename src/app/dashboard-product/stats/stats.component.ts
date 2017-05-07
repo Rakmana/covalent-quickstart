@@ -165,7 +165,7 @@ export class ProductStatsComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this._titleService.setTitle( 'Product Stats' );
+    this._titleService.setTitle( 'احصائيات المنتجات' );
     this.filter();
   }
 

@@ -20,6 +20,8 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
   admin: boolean;
   user: IUser;
   action: string;
+  actionLabel: string;
+
 
   constructor(private _usersService: UsersService,
               private _route: ActivatedRoute,
@@ -38,6 +40,8 @@ export class UsersFormComponent implements OnInit, AfterViewInit {
     this._route.url.subscribe((url: any) => {
       this.action = (url.length > 1 ? url[1].path : 'add');
     });
+
+    this.actionLabel = (this.action != 'add' ? 'تعديل' : 'إضافة');
     this._route.params.subscribe((params: {id: string}) => {
       let userId: string = params.id;
       this._usersService.get(userId).subscribe((user: any) => {

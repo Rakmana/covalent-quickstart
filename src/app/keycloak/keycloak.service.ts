@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 
 import { environment } from '../../environments/environment';
-
-declare var Keycloak: any;
+import * as Keycloak from 'keycloak-js';
+//declare var Keycloak: any;
 
 @Injectable()
 export class KeycloakService {
@@ -39,6 +39,11 @@ export class KeycloakService {
     KeycloakService.auth.authz = null;
 
     window.location.href = KeycloakService.auth.logoutUrl;
+  }  
+  
+  login() {
+    console.log('*** LOGIN');
+    KeycloakService.auth.authz.login();
   }
 
   getToken(): Promise<string> {
@@ -51,6 +56,26 @@ export class KeycloakService {
           })
           .error(() => {
             reject('Failed to refresh token');
+          });
+      } else {
+        reject('Not loggen in');
+      }
+    });
+  }
+
+
+  getProfile(): Promise<any> {
+
+
+    return new Promise<any>((resolve, reject) => {
+      if (KeycloakService.auth.authz.token) {
+        KeycloakService.auth.authz
+          .loadUserProfile()
+          .success(() => {
+            resolve(<any>KeycloakService.auth.authz.profile);
+          })
+          .error((e) => {
+            reject('Failed to load profile. '+e);
           });
       } else {
         reject('Not loggen in');
